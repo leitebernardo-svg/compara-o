@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Comparação de Valores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      padding: 4px;
+      vertical-align: middle;
+    }
+    input[type="text"] {
+      width: 150px;
+      padding: 3px;
+    }
+    .operador {
+      font-weight: bold;
+      text-align: center;
+      width: 30px;
+    }
+    button {
+      padding: 3px 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <td><input type="text" id="v1_eq"></td>
+      <td class="operador">==</td>
+      <td><input type="text" id="v2_eq"></td>
+      <td><button onclick="comparar('eq')">Comparar</button></td>
+    </tr>
+
+    <tr>
+      <td><input type="text" id="v1_neq"></td>
+      <td class="operador">!=</td>
+      <td><input type="text" id="v2_neq"></td>
+      <td><button onclick="comparar('neq')">Comparar</button></td>
+    </tr>
+
+    <tr>
+      <td><input type="text" id="v1_gt"></td>
+      <td class="operador">&gt;</td>
+      <td><input type="text" id="v2_gt"></td>
+      <td><button onclick="comparar('gt')">Comparar</button></td>
+    </tr>
+
+    <tr>
+      <td><input type="text" id="v1_gte"></td>
+      <td class="operador">&gt;=</td>
+      <td><input type="text" id="v2_gte"></td>
+      <td><button onclick="comparar('gte')">Comparar</button></td>
+    </tr>
+
+    <tr>
+      <td><input type="text" id="v1_lt"></td>
+      <td class="operador">&lt;</td>
+      <td><input type="text" id="v2_lt"></td>
+      <td><button onclick="comparar('lt')">Comparar</button></td>
+    </tr>
+
+    <tr>
+      <td><input type="text" id="v1_lte"></td>
+      <td class="operador">&lt;=</td>
+      <td><input type="text" id="v2_lte"></td>
+      <td><button onclick="comparar('lte')">Comparar</button></td>
+    </tr>
+  </table>
+
+  <script>
+    function comparar(tipo) {
+     
+      var val1 = document.getElementById('v1_' + tipo).value;
+      var val2 = document.getElementById('v2_' + tipo).value;
+
+      var num1 = Number(val1.replace(',', '.'));
+      var num2 = Number(val2.replace(',', '.'));
+
+      if (val1 !== "" && val2 !== "" && !isNaN(num1) && !isNaN(num2)) {
+        val1 = num1;
+        val2 = num2;
+      }
+
+      var resultado = false;
+
+      switch (tipo) {
+        case 'eq':
+          resultado = (val1 == val2);
+          break;
+        case 'neq':
+          resultado = (val1 != val2);
+          break;
+        case 'gt':
+          resultado = (val1 > val2);
+          break;
+        case 'gte':
+          resultado = (val1 >= val2);
+          break;
+        case 'lt':
+          resultado = (val1 < val2);
+          break;
+        case 'lte':
+          resultado = (val1 <= val2);
+          break;
+      }
+
+      alert(resultado ? "VERDADEIRO" : "FALSO");
+    }
+  </script>
+
+</body>
+</html>
