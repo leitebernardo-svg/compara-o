@@ -1,119 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Comparação de Valores</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    table {
-      border-collapse: collapse;
-    }
-    td {
-      padding: 4px;
-      vertical-align: middle;
-    }
-    input[type="text"] {
-      width: 150px;
-      padding: 3px;
-    }
-    .operador {
-      font-weight: bold;
-      text-align: center;
-      width: 30px;
-    }
-    button {
-      padding: 3px 8px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Comparador</title>
 </head>
 <body>
 
   <table>
     <tr>
-      <td><input type="text" id="v1_eq"></td>
-      <td class="operador">==</td>
-      <td><input type="text" id="v2_eq"></td>
-      <td><button onclick="comparar('eq')">Comparar</button></td>
+      <td><input id="a1"></td> <td>==</td> <td><input id="a2"></td>
+      <td><button onclick="comp('a1', 'a2', '==')">Comparar</button></td>
     </tr>
-
     <tr>
-      <td><input type="text" id="v1_neq"></td>
-      <td class="operador">!=</td>
-      <td><input type="text" id="v2_neq"></td>
-      <td><button onclick="comparar('neq')">Comparar</button></td>
+      <td><input id="b1"></td> <td>!=</td> <td><input id="b2"></td>
+      <td><button onclick="comp('b1', 'b2', '!=')">Comparar</button></td>
     </tr>
-
     <tr>
-      <td><input type="text" id="v1_gt"></td>
-      <td class="operador">&gt;</td>
-      <td><input type="text" id="v2_gt"></td>
-      <td><button onclick="comparar('gt')">Comparar</button></td>
+      <td><input id="c1"></td> <td>&gt;</td> <td><input id="c2"></td>
+      <td><button onclick="comp('c1', 'c2', '>')">Comparar</button></td>
     </tr>
-
     <tr>
-      <td><input type="text" id="v1_gte"></td>
-      <td class="operador">&gt;=</td>
-      <td><input type="text" id="v2_gte"></td>
-      <td><button onclick="comparar('gte')">Comparar</button></td>
+      <td><input id="d1"></td> <td>&gt;=</td> <td><input id="d2"></td>
+      <td><button onclick="comp('d1', 'd2', '>=')">Comparar</button></td>
     </tr>
-
     <tr>
-      <td><input type="text" id="v1_lt"></td>
-      <td class="operador">&lt;</td>
-      <td><input type="text" id="v2_lt"></td>
-      <td><button onclick="comparar('lt')">Comparar</button></td>
+      <td><input id="e1"></td> <td>&lt;</td> <td><input id="e2"></td>
+      <td><button onclick="comp('e1', 'e2', '<')">Comparar</button></td>
     </tr>
-
     <tr>
-      <td><input type="text" id="v1_lte"></td>
-      <td class="operador">&lt;=</td>
-      <td><input type="text" id="v2_lte"></td>
-      <td><button onclick="comparar('lte')">Comparar</button></td>
+      <td><input id="f1"></td> <td>&lt;=</td> <td><input id="f2"></td>
+      <td><button onclick="comp('f1', 'f2', '<=')">Comparar</button></td>
     </tr>
   </table>
 
   <script>
-    function comparar(tipo) {
-     
-      var val1 = document.getElementById('v1_' + tipo).value;
-      var val2 = document.getElementById('v2_' + tipo).value;
+    function comp(id1, id2, op) {
+      let v1 = document.getElementById(id1).value;
+      let v2 = document.getElementById(id2).value;
 
-      var num1 = Number(val1.replace(',', '.'));
-      var num2 = Number(val2.replace(',', '.'));
-
-      if (val1 !== "" && val2 !== "" && !isNaN(num1) && !isNaN(num2)) {
-        val1 = num1;
-        val2 = num2;
+      let n1 = Number(v1), n2 = Number(v2);
+      if (v1 !== "" && v2 !== "" && !isNaN(n1) && !isNaN(n2)) {
+        v1 = n1; v2 = n2;
       }
 
-      var resultado = false;
+      let res = eval(`v1 ${op} v2`);
 
-      switch (tipo) {
-        case 'eq':
-          resultado = (val1 == val2);
-          break;
-        case 'neq':
-          resultado = (val1 != val2);
-          break;
-        case 'gt':
-          resultado = (val1 > val2);
-          break;
-        case 'gte':
-          resultado = (val1 >= val2);
-          break;
-        case 'lt':
-          resultado = (val1 < val2);
-          break;
-        case 'lte':
-          resultado = (val1 <= val2);
-          break;
-      }
-
-      alert(resultado ? "VERDADEIRO" : "FALSO");
+      alert(res ? "VERDADEIRO" : "FALSO");
     }
   </script>
 
