@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Operadores de Comparação</title>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <td><input id="a1"></td> <td>==</td> <td><input id="a2"></td>
+      <td><button onclick="comp('a1', 'a2', '==')">Comparar</button></td>
+    </tr>
+    <tr>
+      <td><input id="b1"></td> <td>!=</td> <td><input id="b2"></td>
+      <td><button onclick="comp('b1', 'b2', '!=')">Comparar</button></td>
+    </tr>
+    <tr>
+      <td><input id="c1"></td> <td>&gt;</td> <td><input id="c2"></td>
+      <td><button onclick="comp('c1', 'c2', '>')">Comparar</button></td>
+    </tr>
+    <tr>
+      <td><input id="d1"></td> <td>&gt;=</td> <td><input id="d2"></td>
+      <td><button onclick="comp('d1', 'd2', '>=')">Comparar</button></td>
+    </tr>
+    <tr>
+      <td><input id="e1"></td> <td>&lt;</td> <td><input id="e2"></td>
+      <td><button onclick="comp('e1', 'e2', '<')">Comparar</button></td>
+    </tr>
+    <tr>
+      <td><input id="f1"></td> <td>&lt;=</td> <td><input id="f2"></td>
+      <td><button onclick="comp('f1', 'f2', '<=')">Comparar</button></td>
+    </tr>
+  </table>
+
+  <script>
+    function comp(id1, id2, op) {
+      let v1 = document.getElementById(id1).value;
+      let v2 = document.getElementById(id2).value;
+
+      let n1 = Number(v1), n2 = Number(v2);
+      if (v1 !== "" && v2 !== "" && !isNaN(n1) && !isNaN(n2)) {
+        v1 = n1; v2 = n2;
+      }
+
+      let res = eval(`v1 ${op} v2`);
+
+      alert(res ? "VERDADEIRO" : "FALSO");
+    }
+  </script>
+
+</body>
+</html>
